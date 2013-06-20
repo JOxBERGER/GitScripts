@@ -1,21 +1,20 @@
 #!/bin/sh
 # Add Branch and Push Changes
-Repos=( name )
-Branches=(A B C)
-RootUrl='https://github.com/PrototypingInterfaces/'
-LocalRepoFolder='~/PI-GIT/'
+Repos=( TestRepo )
+Branches=(master vvvv_45beta29.2)
+#RootUrl='https://github.com/PrototypingInterfaces/'
+LocalRepoParentFolderPath="GIT/" # Enter Folder relative to home user home Folder without home Sign ~/
 
-cd $GitRepoFolder
 
 for j in ${Branches[@]}
 do 
 
 	for i in ${Repos[@]}
 	do
-		git checkout $j
-		git add -A
-		git commit -m "added Branch" $j $(date +%Y.%m.%d.%H.%M)'"'
-		git push
+		echo ~/$LocalRepoParentFolderPath$i
+		cd ~/$LocalRepoParentFolderPath$i
+		git branch $j
+		git push origin $j
 	done
 
 done

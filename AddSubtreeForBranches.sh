@@ -5,7 +5,7 @@ Repos=(00_CapacitiveCover 2_VVVV-Basics 3_ArduinoBasics 4_1_Potentiometer 4_2_Te
 )
 Branches=(master vvvv_45beta29.2)
 RootUrl='https://github.com/PrototypingInterfaces/'
-GitRepoFolder='~/PI-GIT/'
+GitRepoFolder='~/GIT/TestRepo'
 
 cd $GitRepoFolder
 
@@ -17,5 +17,5 @@ git checkout $j
 		git subtree add --prefix $i --squash $RootUrl$i $j
 	done
 git add -A
-git commit -m "added Branch '$j $(date +%Y.%m.%d.%H.%M)'"'
+git commit -m "added Branch $j $(date +%Y.%m.%d.%H.%M)"
 done
