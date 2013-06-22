@@ -15,17 +15,16 @@ SyncOptions=" --exclude '.git*'"
 
 cd $HOME$GitRepoPath$GitRepoFolder
 
-touch $HOME/aha.txt
-
 for j in ${Branches[@]}
 do 
+	cd $HOME$GitRepoPath$GitRepoFolder
 	git checkout $j
 		for i in ${Repos[@]}
 		do
 		git subtree pull --prefix $i --squash $RootUrl$i $j -m "updated subtree $i $(date +%Y.%m.%d.%H.%M)"
 		done
 git add -A
-#git push origin $j --force # uncommet to push files to master remote
+git push origin $j --force # uncommet to push files to master remote
 
 # copy files to the web folder /var/www
 	rm -rf $HOME$TMP
@@ -37,5 +36,4 @@ git add -A
 	zip -9 -r $GitRepoFolder$US$j.zip  $GitRepoFolder$US$j
 	mv -f $HOME$TMP$GitRepoFolder$US$j.zip /var/www/
 	rm -rf $HOME$TMP
-
 done
