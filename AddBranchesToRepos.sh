@@ -1,8 +1,7 @@
 #!/bin/sh
-# Add Branch and Push Changes
-Repos=( TestRepoAll )
+# Add Branches to Repos
+Repos=( PrototypingInterfaces_AllPatches )
 Branches=(master vvvv_45beta29.2)
-#RootUrl='git@github.com:PrototypingInterfaces/TestRepoAll.git'
 LocalRepoParentFolderPath="GIT/" # Enter Folder relative to home user home Folder without home Sign ~/
 
 
@@ -14,7 +13,8 @@ do
 		echo ~/$LocalRepoParentFolderPath$i
 		cd ~/$LocalRepoParentFolderPath$i
 		git branch $j
-		git push origin $j
+		#git add -A
+		#git commit -m "added Branch $j $(date +%Y.%m.%d.%H.%M)"
 	done
 
 done

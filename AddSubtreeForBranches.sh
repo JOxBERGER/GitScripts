@@ -16,4 +16,6 @@ git checkout $j
 	do
 		git subtree add --prefix $i --squash $RootUrl$i $j
 	done
+git add -A
+git commit -m "added Subtree for Branch $j $(date +%Y.%m.%d.%H.%M)"
 done
