@@ -1,8 +1,8 @@
 #!/bin/sh
 # Add Branch and Push Changes
-Repos=( TestRepo )
+Repos=( TestRepoAll )
 Branches=(master vvvv_45beta29.2)
-#RootUrl='https://github.com/PrototypingInterfaces/'
+#RootUrl='git@github.com:PrototypingInterfaces/TestRepoAll.git'
 LocalRepoParentFolderPath="GIT/" # Enter Folder relative to home user home Folder without home Sign ~/
 
 
