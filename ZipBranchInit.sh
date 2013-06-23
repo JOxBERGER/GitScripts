@@ -24,33 +24,9 @@ echo "--------- Start --------------"
 for i in ${Repos[@]}
 do 
 	# only once!
-	cd $HOME$GitRepoPath$
-	git clone $RootUrl$RootUrl
+	cd $HOME$GitRepoPath
+	git clone $RootUrl$i
 	#########
-	
-
-		for j in ${Branches[@]}
-		do
-		cd $HOME$GitRepoPath$i		
-		echo -e "\ndo: checkout" $j
-		git checkout $j
-
-		rm -rf $HOME$TMP
-		mkdir $HOME$TMP
-
-		echo -e "\ndo: cd in tmp folder "$HOME$TMP
-		cd $HOME$TMP
-		echo -e "\ndo: starts rsync"
-		eval rsync --archive $SyncOptions $HOME$GitRepoPath$i/ $HOME$TMP$i$US$j/
-		echo -e "\ndo: zip content"
-		zip -9 -r -q  $i$US$j.zip  $i$US$j
-		mv -f $HOME$TMP$i$US$j.zip $WEB
-		rm -rf $HOME$TMP
-		echo -e "\n\ndone! made updates for branch "$i$US$j
-
-
-
-		done
 	
 	done
 
