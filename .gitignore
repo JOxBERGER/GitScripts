@@ -16,4 +16,4 @@ $RECYCLE.BIN/
 .DS_Store
 
 # Log Files
-.log
+*.log
