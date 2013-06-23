@@ -53,7 +53,7 @@ do
 	zip -9 -r -q  $GitRepoFolder$US$j.zip  $GitRepoFolder$US$j
 	mv -f $HOME$TMP$GitRepoFolder$US$j.zip $WEB
 	rm -rf $HOME$TMP
-	echo -e "\n\ndone! made updates for branch "$RootUrl$US$j
+	echo -e "\n\ndone! made updates for branch "$GitRepoFolder$US$j
 done
 
 cd $HOME
