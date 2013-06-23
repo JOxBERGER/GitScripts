@@ -3,7 +3,7 @@
 # This Script will Update Folders with identical names and different
 # Extensions like GitRepoFolde_VersionA, GitRepoFolder_VersionB etc. 
 # The underscore is madatory as is the Version Extensions. See the 
-# Variables below.
+# Variables below..
 
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
