@@ -2,6 +2,7 @@
 # Update Subtree For Branches and Push
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+source $HOME/.keychain/${HOSTNAME}-sh
 
 Repos=(00_CapacitiveCover 2_VVVV-Basics 3_ArduinoBasics 4_1_Potentiometer 4_2_Temperatursensor 4_3_Accelerometer 4_4_RFID 4_5_OneDimensionalSlider 4_6_TwoDimensionalSlider 5_1_Fiducial-Tracking 5_2_AugmentedReality 5_3_Facetracking 5_4_Colortracking 5_5_Multitouch 5_6_GestureControl 6_1_Multiscreen 6_2_2DMappingOnPlaneSurfaces 6_3_3DIllusionThroughProjectionMapping 7_1_Servomotor 7_2_VibrationMotor
 )
@@ -34,14 +35,14 @@ do
 		echo -e "\n\ndo: update subtree "$i" for branch "$j 
 		$GITPATH subtree pull --prefix $i --squash $RootUrl$i $j -m "updated subtree $i $(date +%Y.%m.%d.%H.%M)" 
 	done
-#echo -e "\ndo: git add"
-#$GITPATH add -A
-#echo -e "\ndo: git commit"
-#$GITPATH commit -m "update"
-#echo -e "\ndo: git push "$j
-#$GITPATH push --force origin $j # uncommet to push files to master remote
+echo -e "\ndo: git add"
+$GITPATH add -A
+echo -e "\ndo: git commit"
+$GITPATH commit -m "update"
+echo -e "\ndo: git push "$j
+$GITPATH push --force origin $j # uncommet to push files to master remote
 
-# copy fi les to the web folder /var/www
+#  copy files to the web folder /var/www
 	rm -rf $HOME$TMP
 	mkdir $HOME$TMP
 	echo -e "\ndo: checkout "$j
@@ -57,7 +58,7 @@ do
 	echo -e "\n\ndone! made updates for branch "$RootUrl$US$j
 done
 
-#echo -e "\n\ndo a last push for all branches"
+echo -e "\n\ndo a last push for all branches"
 cd $HOME$GitRepoPath$GitRepoFolder
-#$GITPATH push --force origin
+$GITPATH push --force origin
 echo "________________done____________________"

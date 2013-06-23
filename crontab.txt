@@ -1,3 +1,0 @@
-sh /home/PrototypingInterfaces/GIT/GitScripts/UpdateSubtreeBranchesZipResults.sh
-
-~                                                                                                 
