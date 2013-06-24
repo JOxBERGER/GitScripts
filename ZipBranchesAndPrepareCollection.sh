@@ -1,4 +1,4 @@
-#/bin/sh
+#i/bin/sh
 # Update Subtree For Branches and Push
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
@@ -13,7 +13,7 @@ HOME='/home/PrototypingInterfaces/'
 GitRepoPath='GIT/'
 CollectionFolder='PrototypingInterfaces_AllPatches'
 TMP=$(date +"%s")'PItmpfolder/'
-WEB='/var/www/test'
+WEB='/var/www/PrototypingInterfaces'
 GITPATH='/usr/local/bin/git'
 DefaultRemoteBranch='master'
 
