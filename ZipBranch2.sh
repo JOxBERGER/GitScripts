@@ -11,8 +11,9 @@ RootUrl='https://github.com/PrototypingInterfaces/'
 
 HOME='/home/PrototypingInterfaces/'
 GitRepoPath='GIT/'
+CollectionFolder='PrototypingInterfaces_AllPatches'
 TMP='PItmpfolder/'
-WEB='/var/www/PrototypingInterfaces'
+WEB='/var/www/test'
 GITPATH='/usr/local/bin/git'
 DefaultRemoteBranch='master'
 
@@ -21,11 +22,17 @@ SyncOptions=" --exclude '.git*'"
 
 echo "--------- Start --------------"
 
-for i in ${Repos[@]}
+rm -rf $HOME$TMP # delete tmp folder
+mkdir $HOME$TMP # start with making a new collection folder
+
+for i in ${Branches[@]}
 do 
 
-		for j in ${Branches[@]}
+mkdir $HOME$TMP$CollectionFolder$US$i
+
+		for j in ${Repos[@]}
 		do
+			
 		cd $HOME$GitRepoPath$i		
 	
 		git checkout $j
@@ -34,23 +41,24 @@ do
 		git reset --hard FETCH_HEAD
 		git clean -df
 		
+		# go to home
 		rm -rf $HOME$TMP
 		mkdir $HOME$TMP
-
-		echo -e "\ndo: cd in tmp folder "$HOME$TMP
-		cd $HOME$TMP
+		
+		# copy files 
+		echo -e "\ndo: cd in tmp folder "$HOME$TMP$CollectionFolder$US$i
+		cd $HOME$TMP$CollectionFolder$US$i
 		echo -e "\ndo: starts rsync"
-		eval rsync --archive $SyncOptions $HOME$GitRepoPath$i/ $HOME$TMP$i$US$j/
+		eval rsync --archive $SyncOptions $HOME$GitRepoPath$i/ $HOME$TMP$CollectionFolder$US$i/$i$US$j/
 		echo -e "\ndo: zip content"
 		zip -9 -r -q  $i$US$j.zip  $i$US$j
 		mv -f $HOME$TMP$i$US$j.zip $WEB
-		rm -rf $HOME$TMP
 		echo -e "\n\ndone! made updates for branch "$i$US$j
-
-
-
 		done
-	
+		cd $HOME$TMP
+		zip -9 -r -q  $CollectionFolder$US$i.zip  $CollectionFolder$US$i
+		mv -f $CollectionFolder$US$i.zip $WEB
+		
 	done
 
 cd $HOME
