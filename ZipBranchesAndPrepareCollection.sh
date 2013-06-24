@@ -29,34 +29,37 @@ mkdir $HOME$TMP # start with making a new collection folder
 for i in ${Branches[@]}
 do 
 
+echo -e "\n\n\n start working on branch "$j$US$i 
 mkdir $HOME$TMP$CollectionFolder$US$i
 
 		for j in ${Repos[@]}
 		do
 			
+		echo -e "\n    do: go in: "$HOME$GitRepoPath$j 
 		cd $HOME$GitRepoPath$j		
 	
 		git checkout $i
-		
 		git fetch origin $i
 		git reset --hard FETCH_HEAD
 		git clean -df
 		
-		
 		# copy files 
-		echo -e "\ndo: cd in tmp folder "$HOME$TMP$CollectionFolder$US$i
+		echo -e "    do: cd in tmp folder "$HOME$TMP$CollectionFolder$US$i
 		#mkdir $HOME$TMP$CollectionFolder$US$i
 		cd $HOME$TMP$CollectionFolder$US$i
-		echo -e "\ndo: starts rsync"
+		echo -e "    do: starts rsync"
 		eval rsync --archive $SyncOptions $HOME$GitRepoPath$j/ $HOME$TMP$CollectionFolder$US$i$BS$j$US$i/
-		echo -e "\ndo: zip content"
+		echo -e "    do: zip content"
 		zip -9 -r -q  $j$US$i.zip  $j$US$i
 		mv -f $j$US$i.zip $WEB
 		done
-		cd $HOME$TMP
-		zip -9 -r -q  $CollectionFolder$US$i.zip  $CollectionFolder$US$i
-		mv -f $CollectionFolder$US$i.zip $WEB
-		echo -e "\n\ndone! made updates for branch "$j$US$i	
+	
+	echo "\n  do: zip collection of branch "$i
+	cd $HOME$TMP
+	zip -9 -r -q  $CollectionFolder$US$i.zip  $CollectionFolder$US$i
+	mv -f $CollectionFolder$US$i.zip $WEB
+	echo -e "\n  done! made updates for branch "$j$US$i	
+	echo    "   --------------------------------------------"
 	done
 
 cd $HOME
