@@ -33,11 +33,11 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		for j in ${Repos[@]}
 		do
 			
-		cd $HOME$GitRepoPath$i		
+		cd $HOME$GitRepoPath$j		
 	
-		git checkout $j
+		git checkout $i
 		
-		git fetch origin $j
+		git fetch origin $i
 		git reset --hard FETCH_HEAD
 		git clean -df
 		
@@ -49,11 +49,11 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		echo -e "\ndo: cd in tmp folder "$HOME$TMP$CollectionFolder$US$i
 		cd $HOME$TMP$CollectionFolder$US$i
 		echo -e "\ndo: starts rsync"
-		eval rsync --archive $SyncOptions $HOME$GitRepoPath$i/ $HOME$TMP$CollectionFolder$US$i/$i$US$j/
+		eval rsync --archive $SyncOptions $HOME$GitRepoPath$j/ $HOME$TMP$CollectionFolder$US$i/$j$US$i/
 		echo -e "\ndo: zip content"
-		zip -9 -r -q  $i$US$j.zip  $i$US$j
-		mv -f $HOME$TMP$i$US$j.zip $WEB
-		echo -e "\n\ndone! made updates for branch "$i$US$j
+		zip -9 -r -q  $j$US$i.zip  $j$US$i
+		mv -f $HOME$TMP$j$US$i.zip $WEB
+		echo -e "\n\ndone! made updates for branch "$j$US$i
 		done
 		cd $HOME$TMP
 		zip -9 -r -q  $CollectionFolder$US$i.zip  $CollectionFolder$US$i
