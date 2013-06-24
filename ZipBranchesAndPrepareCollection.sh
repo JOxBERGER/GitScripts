@@ -12,7 +12,7 @@ RootUrl='https://github.com/PrototypingInterfaces/'
 HOME='/home/PrototypingInterfaces/'
 GitRepoPath='GIT/'
 CollectionFolder='PrototypingInterfaces_AllPatches'
-TMP='PItmpfolder/'
+TMP=$(date +"%s")'PItmpfolder/'
 WEB='/var/www/test'
 GITPATH='/usr/local/bin/git'
 DefaultRemoteBranch='master'
@@ -52,14 +52,13 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		echo -e "\ndo: zip content"
 		zip -9 -r -q  $j$US$i.zip  $j$US$i
 		mv -f $j$US$i.zip $WEB
-		echo -e "\n\ndone! made updates for branch "$j$US$i
 		done
 		cd $HOME$TMP
 		zip -9 -r -q  $CollectionFolder$US$i.zip  $CollectionFolder$US$i
 		mv -f $CollectionFolder$US$i.zip $WEB
-		
+		echo -e "\n\ndone! made updates for branch "$j$US$i	
 	done
 
 cd $HOME
-
+rm -rf $HOME$TMP
 echo "________________done____________________"
