@@ -18,6 +18,7 @@ GITPATH='/usr/local/bin/git'
 DefaultRemoteBranch='master'
 
 US='_'
+BS='/'
 SyncOptions=" --exclude '.git*'"
 
 echo "--------- Start --------------"
@@ -41,18 +42,16 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		git reset --hard FETCH_HEAD
 		git clean -df
 		
-		# go to home
-		rm -rf $HOME$TMP
-		mkdir $HOME$TMP
 		
 		# copy files 
 		echo -e "\ndo: cd in tmp folder "$HOME$TMP$CollectionFolder$US$i
+		#mkdir $HOME$TMP$CollectionFolder$US$i
 		cd $HOME$TMP$CollectionFolder$US$i
 		echo -e "\ndo: starts rsync"
-		eval rsync --archive $SyncOptions $HOME$GitRepoPath$j/ $HOME$TMP$CollectionFolder$US$i/$j$US$i/
+		eval rsync --archive $SyncOptions $HOME$GitRepoPath$j/ $HOME$TMP$CollectionFolder$US$i$BS$j$US$i/
 		echo -e "\ndo: zip content"
 		zip -9 -r -q  $j$US$i.zip  $j$US$i
-		mv -f $HOME$TMP$j$US$i.zip $WEB
+		mv -f $j$US$i.zip $WEB
 		echo -e "\n\ndone! made updates for branch "$j$US$i
 		done
 		cd $HOME$TMP
