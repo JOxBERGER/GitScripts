@@ -41,7 +41,7 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		git checkout $i
 		git fetch origin $i
 		git reset --hard FETCH_HEAD
-		git clean -df
+		git clean -d -x -f
 		
 		# copy files 
 		echo -e "    do: cd in tmp folder "$HOME$TMP$CollectionFolder$US$i
