@@ -5,7 +5,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 source $HOME/.keychain/${HOSTNAME}-sh
 
 Repos=('00_CapacitiveCover' '2_VVVV-Basics' '3_ArduinoBasics' '4_1_Potentiometer' '4_2_Temperatursensor' '4_3_Accelerometer' '4_4_RFID' '4_5_OneDimensionalSlider' '4_6_TwoDimensionalSlider' '5_1_Fiducial-Tracking' '5_2_AugmentedReality' '5_3_Facetracking' '5_4_Colortracking' '5_5_Multitouch' '5_6_GestureControl' '6_1_Multiscreen' '6_2_2DMappingOnPlaneSurfaces' '6_3_3DIllusionThroughProjectionMapping' '7_1_Servomotor' '7_2_VibrationMotor')
-Branches=('vvvv_45beta29.2' 'TogEdge')
+Branches=('vvvv_45beta29.2' 'latest')
+#Branches=('latest')
 RootUrl='https://github.com/PrototypingInterfaces/'
 
 HOME='/home/PrototypingInterfaces/'
@@ -55,7 +56,7 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		mv -f $j$US$i.zip $WEB
 		# generate downlaod flag
 		PatchVersion=`cat $HOME$GitRepoPath$j$BS'version.txt'`
-		convert $TemplatePath$i'.png' -gravity SouthWest -font Armata-Regular -fill '#7ba400'  -pointsize 14 -draw "text 110,10'$version'" $j$US$i.png
+		convert $TemplatePath$i'.png' -gravity SouthWest -font Armata-Regular -fill '#7ba400'  -pointsize 14 -draw "text 110,10'$PatchVersion'" $j$US$i.png
 		mv $j$US$i.png $WEB
 		done
 	
