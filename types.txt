@@ -206,6 +206,12 @@ Path: /etc/ImageMagick/type-ghostscript.xml
     glyphs: /usr/share/fonts/type1/gsfonts/n021003l.pfb
 
 Path: System Fonts
+  Font: Armata-Regular
+    family: Armata
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/truetype/Armata-Regular.ttf
   Font: Century-Schoolbook-Bold
     family: Century Schoolbook
     style: Normal
