@@ -4,6 +4,6 @@
 value=`cat version.txt`
 touch "$value".xml
 
-convert tmpimage.png -gravity SouthEast -font Times-Bold -pointsize 72 -draw "text 0,0 'Hallo Welt'" ausgabe.png
+convert tmpimage.png -gravity SouthEast -font Arial -pointsize 72 -draw "text 0,0 $value" ausgabe.png
 
 cp ausgabe.png /var/www/PrototypingInterfaces/ausgabe.png
