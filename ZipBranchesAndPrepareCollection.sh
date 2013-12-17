@@ -1,15 +1,15 @@
-#! /bin/sh
+#!/bin/bash
 # Update Subtree For Branches and Push
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 source $HOME/.keychain/${HOSTNAME}-sh
 
 Repos=('00_CapacitiveCover' '2_VVVV-Basics' '3_ArduinoBasics' '4_1_Potentiometer' '4_2_Temperatursensor' '4_3_Accelerometer' '4_4_RFID' '4_5_OneDimensionalSlider' '4_6_TwoDimensionalSlider' '5_1_Fiducial-Tracking' '5_2_AugmentedReality' '5_3_Facetracking' '5_4_Colortracking' '5_5_Multitouch' '5_6_GestureControl' '6_1_Multiscreen' '6_2_2DMappingOnPlaneSurfaces' '6_3_3DIllusionThroughProjectionMapping' '7_1_Servomotor' '7_2_VibrationMotor')
-Branches=('vvvv_45beta29.2' 'master')
+Branches=('vvvv_45beta29.2' 'TogEdge')
 RootUrl='https://github.com/PrototypingInterfaces/'
 
 HOME='/home/PrototypingInterfaces/'
-TemplateImage='/home/PrototypingInterfaces/GIT/GitScripts/template.png'
+TemplatePath='/var/www/template/'
 GitRepoPath='GIT/'
 CollectionFolder='PrototypingInterfaces_AllPatches'
 TMP=$(date +"%s")'PItmpfolder/'
@@ -38,6 +38,7 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		echo -e "\n    do: go in: "$HOME$GitRepoPath$j 
 		cd $HOME$GitRepoPath$j		
 	
+		git fetch --all
 		git checkout $i
 		git fetch origin $i
 		git reset --hard FETCH_HEAD
@@ -53,8 +54,8 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		zip -9 -r -q  $j$US$i.zip  $j$US$i
 		mv -f $j$US$i.zip $WEB
 		# generate downlaod flag
-		PatchVersion=`cat version.txt`
-		convert $TemplateImage -gravity SouthWest -font Armata-Regular -fill '#7ba400'  -pointsize 14 -draw "text 110,10'$version'" $j$US$i.png
+		PatchVersion=`cat $HOME$GitRepoPath$j$BS'version.txt'`
+		convert $TemplatePath$i'.png' -gravity SouthWest -font Armata-Regular -fill '#7ba400'  -pointsize 14 -draw "text 110,10'$version'" $j$US$i.png
 		mv $j$US$i.png $WEB
 		done
 	
