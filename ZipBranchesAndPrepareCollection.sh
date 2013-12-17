@@ -1,4 +1,4 @@
-#i/bin/sh
+#! /bin/sh
 # Update Subtree For Branches and Push
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
