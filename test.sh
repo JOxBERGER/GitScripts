@@ -5,6 +5,6 @@ version=`cat version.txt`
 versiontext="(for $version)"
 # touch "$version".xml
 
-convert template.png -gravity SouthWest -font Armata-Regular -fill '#333333'  -pointsize 21 -draw "text 40,10 '$version'" ausgabe.png
+convert template.png -gravity SouthWest -font Armata-Regular -fill '#7ba400'  -pointsize 14 -draw "text 110,10'$version'" ausgabe.png
 
 mv ausgabe.png /var/www/PrototypingInterfaces/ausgabe.png
