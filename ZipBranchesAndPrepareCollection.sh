@@ -9,6 +9,7 @@ Branches=(vvvv_45beta29.2 master)
 RootUrl='https://github.com/PrototypingInterfaces/'
 
 HOME='/home/PrototypingInterfaces/'
+TemplateImage='/home/PrototypingInterfaces/GIT/GitScripts/template.png'
 GitRepoPath='GIT/'
 CollectionFolder='PrototypingInterfaces_AllPatches'
 TMP=$(date +"%s")'PItmpfolder/'
@@ -51,6 +52,10 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		echo -e "    do: zip content"
 		zip -9 -r -q  $j$US$i.zip  $j$US$i
 		mv -f $j$US$i.zip $WEB
+		# generate downlaod flag
+		PatchVersion=`cat version.txt`
+		convert $TemplateImage -gravity SouthWest -font Armata-Regular -fill '#7ba400'  -pointsize 14 -draw "text 110,10'$version'" $j$US$i.png
+		mv $j$US$i.png $WEB
 		done
 	
 	echo "\n  do: zip collection of branch "$i
