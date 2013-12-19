@@ -55,7 +55,7 @@ mkdir $HOME$TMP$CollectionFolder$US$i
 		mv -f $j$US$i.zip $WEB
 		# generate downlaod flag
 		PatchVersion=`cat $HOME$GitRepoPath$j$BS'version.txt'`
-		convert $TemplatePath$i'.png' -gravity SouthWest -font Armata-Regular -fill '#7ba400'  -pointsize 14 -draw "text 110,10'$PatchVersion'" $j$US$i.png
+		convert $TemplatePath$i'.png' -gravity SouthWest -font Armata-Regular -fill '#7ba400'  -pointsize 14 -draw "text 120,11'$PatchVersion'" $j$US$i.png
 		mv $j$US$i.png $WEB
 		done
 	
